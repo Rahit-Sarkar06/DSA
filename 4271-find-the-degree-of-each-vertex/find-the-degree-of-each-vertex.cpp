@@ -5,9 +5,7 @@ public:
         int count=0;
         for(int i=0;i<matrix.size();i++){
             for(int j=0;j<matrix[0].size();j++){
-                if(matrix[i][j]==1){
-                    count++;
-                }
+                count+=matrix[i][j];
             }
             v.push_back(count);
             count=0;
