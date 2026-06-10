@@ -1,0 +1,27 @@
+class Solution {
+public:
+    bool isPrime(int n) {
+        if (n <= 1)
+            return false;
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0)
+                return false;
+        }
+        return true;
+    }
+    int diagonalPrime(vector<vector<int>>& nums) {
+        int m = nums.size();
+        int n = nums[0].size();
+        int count = 0;
+        for (int i = 0; i < m; i++) {
+
+                if (isPrime(nums[i][i])) {
+                    count = max(count, nums[i][i]);
+                }
+                if (isPrime(nums[i][m-i-1])) {
+                    count = max(count, nums[i][m-i-1]);
+                }
+        }
+        return count;
+    }
+};
