@@ -12,12 +12,10 @@ public:
 
         for (auto it : freq) {
             if (it.first == 'a' || it.first == 'e' || it.first == 'i' ||
-                it.first == 'o' || it.first == 'u') {
-                if (it.second > maxv)
-                    maxv = it.second;
-            } else if (it.second > maxc) {
-                maxc = it.second;
-            }
+                it.first == 'o' || it.first == 'u')
+                maxv = max(it.second, maxv);
+            else
+                maxc = max(it.second, maxc);
         }
         return maxv + maxc;
     }
