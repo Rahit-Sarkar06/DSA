@@ -1,12 +1,16 @@
 class Solution {
 public:
     int triangularSum(vector<int>& nums) {
-        int n = nums.size();
-        while (n != 1) {
-            for (int i = 0; i < n - 1; i++) {
-                nums[i] = (nums[i] + nums[i + 1]) % 10;
+        int s = nums.size();
+        while (s > 1) {
+
+            for (int i = 0; i < s - 1; i++) {
+                int tmp = nums[i] + nums[i + 1];
+                if (tmp >= 10)
+                    tmp = tmp - 10;
+                nums[i] = tmp;
             }
-            n--;
+            s--;
         }
         return nums[0];
     }
