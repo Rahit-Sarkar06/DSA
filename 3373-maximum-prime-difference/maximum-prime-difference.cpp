@@ -15,14 +15,10 @@ public:
             i++;
         }
 
-        int prev = i;
-
-        int curr;
-        for (int j = i; j < nums.size(); j++) {
-            if (prime(nums[j])) {
-                curr = j;
-            }
+        int j = nums.size() - 1;
+        while (!prime(nums[j])) {
+            j--;
         }
-        return abs(prev - curr);
+        return abs(j - i);
     }
 };
