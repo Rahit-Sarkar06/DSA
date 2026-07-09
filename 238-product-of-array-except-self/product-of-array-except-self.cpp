@@ -2,10 +2,6 @@ class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& nums) {
         vector<int> ans;
-        if (nums.size() == 2) {
-            reverse(nums.begin(), nums.end());
-            return nums;
-        }
         ans.push_back(1);
         int m = 1, n = 1;
         for (int i = 1; i < nums.size(); i++) {
