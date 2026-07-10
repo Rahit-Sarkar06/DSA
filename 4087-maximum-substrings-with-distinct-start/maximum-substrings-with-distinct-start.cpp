@@ -1,11 +1,14 @@
 class Solution {
 public:
     int maxDistinct(string s) {
-        sort(s.begin(), s.end());
-        int cnt = 1;
-        for (int i = 1; i < s.size(); i++) {
-            if (s[i] != s[i - 1])
-                cnt++;
+        int cnt = 0;
+        unordered_map<char, int> freq;
+
+        for (int x : s) {
+            freq[x]++;
+        }
+        for (auto& p : freq) {
+            cnt++;
         }
         return cnt;
     }
