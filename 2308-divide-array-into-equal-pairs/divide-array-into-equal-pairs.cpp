@@ -3,7 +3,7 @@ public:
     bool divideArray(vector<int>& nums) {
         map<int, int> freq;
 
-        for (char c : nums) {
+        for (int c : nums) {
             freq[c]++;
         }
 
