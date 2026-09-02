@@ -4,7 +4,7 @@ public:
         long long total = 0;
         int n = v.size();
         for (int i = 0; i < n; i++) {
-            total += ceil((double)v[i] / hourly);
+            total += ceil(v[i] + hourly - 1) / hourly;
         }
         return total;
     }
