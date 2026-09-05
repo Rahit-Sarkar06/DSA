@@ -5,18 +5,16 @@ public:
         vector<int> m(n);
         int mini = INT_MAX;
         int maxi = INT_MIN;
-        int i = n - 1;
-        while (i >= 0) {
+
+        for (int i = n - 1; i >= 0; i--) {
             mini = min(nums[i], mini);
             m[i] = mini;
-            i--;
         }
-        i = 0;
-        while (i < n) {
+
+        for (int i = 0; i < n; i++) {
             maxi = max(nums[i], maxi);
             if (maxi - m[i] <= k)
                 return i;
-            i++;
         }
         return -1;
     }
