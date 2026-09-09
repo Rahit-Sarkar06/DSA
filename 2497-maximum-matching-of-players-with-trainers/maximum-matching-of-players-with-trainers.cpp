@@ -9,11 +9,13 @@ public:
         int j = 0;
         int cnt = 0;
         while (i < m && j < n) {
-            if (players[i] <= trainers[j]) {
+            if (players[i] > trainers[j]) {
+                j++;
+            } else {
                 cnt++;
                 i++;
+                j++;
             }
-            j++;
         }
         return cnt;
     }
