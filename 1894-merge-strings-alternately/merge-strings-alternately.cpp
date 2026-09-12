@@ -7,18 +7,14 @@ public:
         int m = word1.size();
         int n = word2.size();
         while (i < m && j < n) {
-            s += word1[i];
-            s += word2[j];
-            i++;
-            j++;
+            s += word1[i++];
+            s += word2[j++];
         }
         while (i < m) {
-            s += word1[i];
-            i++;
+            s += word1[i++];
         }
         while (j < n) {
-            s += word2[j];
-            j++;
+            s += word2[j++];
         }
         return s;
     }
