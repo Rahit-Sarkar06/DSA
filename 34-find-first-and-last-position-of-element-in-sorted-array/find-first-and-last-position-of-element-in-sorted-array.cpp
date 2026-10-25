@@ -2,20 +2,34 @@ class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
         int n = nums.size();
-        int m = -1;
-        int k = -1;
-        for (int i = 0; i < n; i++) {
-            if (nums[i] == target) {
-                if (m == -1) {
-                    m = i;
-                    k = i;
-                }
-                k = i;
+        int start = -1;
+        int end = -1;
+        int i = 0;
+        int j = n - 1;
+        while (i <= j) {
+            int mid = i + (j - i) / 2;
+            if (nums[mid] == target) {
+                start = mid;
+                j = mid - 1;
+            } else if (nums[mid] < target) {
+                i = mid + 1;
+            } else {
+                j = mid - 1;
             }
         }
-        vector<int> t(2);
-        t[0] = m;
-        t[1] = k;
-        return t;
+        i = 0;
+        j = n - 1;
+        while (i <= j) {
+            int mid = i + (j - i) / 2;
+            if (nums[mid] == target) {
+                end = mid;
+                i = mid + 1;
+            } else if (nums[mid] < target) {
+                i = mid + 1;
+            } else {
+                j = mid - 1;
+            }
+        }
+        return {start, end};
     }
 };
