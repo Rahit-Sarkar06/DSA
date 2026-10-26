@@ -14,21 +14,25 @@ public:
         return -1;
     }
     int search(vector<int>& nums, int target) {
-        int i = 0;
         int n = nums.size();
-        while (i < n - 1 && nums[i] < nums[i + 1]) {
-            i++;
+        int i = 0;
+        int j = n - 1;
+        int ans = -1;
+        while (i <= j) {
+            int mid = i + (j - i) / 2;
+            if (nums[i] <= nums[mid]) {
+                ans = search(nums, i, mid, target);
+                i = mid + 1;
+                if (ans != -1)
+                    break;
+            } else {
+                ans = search(nums, mid, j, target);
+                j = mid - 1;
+                if (ans != -1)
+                    break;
+            }
         }
-        if (target >= nums[0] && target <= nums[i]) {
-            int m = search(nums, 0, i, target);
-            if (m != -1)
-                return m;
-        } else if (i < n - 1 && target >= nums[i + 1] &&
-                   target <= nums[n - 1]) {
-            int t = search(nums, i + 1, n - 1, target);
-            if (t != -1)
-                return t;
-        }
-        return -1;
+
+        return ans;
     }
 };
