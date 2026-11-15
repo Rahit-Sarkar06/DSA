@@ -3,28 +3,29 @@ public:
     int candy(vector<int>& ratings) {
 
         int n = ratings.size();
-        if (n == 0)
-            return 0;
-        vector<int> left(n);
-        left[0] = 1;
-        for (int i = 1; i < n; i++) {
-            if (ratings[i] > ratings[i - 1]) {
-                left[i] = left[i - 1] + 1;
-            } else {
-                left[i] = 1;
+        int sum = 1;
+        int i = 1;
+        while (i < n) {
+            if (ratings[i] == ratings[i - 1]) {
+                sum++;
+                i++;
+                continue;
             }
-        }
-        int cur = 1;
-        int right = 1;
-        int sum = max(1, left[n - 1]);
-        for (int i = n - 2; i >= 0; i--) {
-            if (ratings[i] > ratings[i + 1]) {
-                cur = right + 1;
-            } else {
-                cur = 1;
+            int peak = 1;
+            while (i < n && ratings[i] > ratings[i - 1]) {
+                peak++;
+                sum += peak;
+                i++;
             }
-            right = cur;
-            sum += max(left[i], cur);
+            int down = 1;
+            while (i < n && ratings[i] < ratings[i - 1]) {
+                sum += down;
+                down++;
+                i++;
+            }
+            if (down > peak) {
+                sum += (down - peak);
+            }
         }
         return sum;
     }
